@@ -1,0 +1,60 @@
+body {
+  margin: 0px;
+}
+
+#padre {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  width: 400px;
+  background-color: rgb(39, 26, 75);
+  border-radius: 7px;
+}
+
+#inputs {
+  width: 60%;
+  padding: 9px;
+  background-color: transparent;
+  border: none;
+  border: 1px solid #4c52a5;
+  color: white;
+  border-radius: 5px;
+  transition: all 2s;
+}
+
+#inputs::placeholder {
+  color: rgb(194, 194, 194);
+}
+
+#agregar-btn {
+  padding: 10px 10px;
+  background-color: #646cdb;
+  color: white;
+  border: none;
+  transition: all 0.3s;
+}
+
+#agregar-btn:hover {
+  cursor: pointer;
+  background-color: white;
+  color: #646cdb;
+}
+
+#forms {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  #card {
+    width: 360px;
+  }
+}
