@@ -1,5 +1,6 @@
 body {
   margin: 0px;
+  background-color: rgb(39, 26, 75);
 }
 
 #padre {
@@ -11,10 +12,7 @@ body {
 #card {
   padding: 20px;
   width: 100%;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
   max-width: 500px;
-  background-color: rgb(39, 26, 75);
-  border-radius: 7px;
 }
 
 #inputs {
@@ -24,7 +22,6 @@ body {
   border: none;
   border: 1px solid #4c52a5;
   color: white;
-  border-radius: 5px;
 }
 
 #inputs::placeholder {
@@ -47,22 +44,31 @@ body {
 
 #tarea {
   margin-top: 20px;
-  padding-top: 20px;
-  padding-bottom: 20px;
   padding-left: 10px;
   padding-right: 10px;
-  border-radius: 5px;
   background-color: #646cdb;
   display: "flex";
   justify-content: center;
+  transition: all 0.3s;
+  box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.2);
 }
 
 #iconos {
-  color: white;
+  color: rgb(227, 227, 227);
   font-size: 18px;
   margin-right: 10px;
 }
 #iconos:hover {
+  cursor: pointer;
+}
+
+#texto-tareas {
+  color: "white";
+  font-family: "sans-serif";
+  font-size: "17px";
+}
+
+#texto-tareas:hover {
   cursor: pointer;
 }
 

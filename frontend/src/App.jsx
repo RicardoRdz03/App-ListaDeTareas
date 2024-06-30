@@ -22,13 +22,33 @@ function App() {
     console.log(todo);
   };
 
+  const toggleComplete = (id) => {
+    setTodo(
+      todo.map((todos) =>
+        todos.id === id ? { ...todos, completed: !todos.completed } : todos
+      )
+    );
+  };
+
+  const toggleDelete = (id) => {
+    setTodo(todo.filter((todos) => todos.id !== id));
+  };
+
   return (
     <>
       <div id="padre">
         <div id="card">
+          <h1 style={{ textAlign: "center", color: "white" }}>
+            Lista de tareas
+          </h1>
           <Formulario addTodo={addTodo} />
-          {todo.map((todos, index) => (
-            <ListaDeTareas task={todos} key={index} />
+          {todo.map((todos) => (
+            <ListaDeTareas
+              task={todos}
+              key={todos.id}
+              toggleComplete={toggleComplete}
+              deleteTask={toggleDelete}
+            />
           ))}
         </div>
       </div>
