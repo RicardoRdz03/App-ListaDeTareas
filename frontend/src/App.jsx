@@ -1,37 +1,56 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import "./styles.css";
 import Formulario from "./components/Formulario";
 import { v4 as uuidv4 } from "uuid";
 import ListaDeTareas from "./components/ListaDeTareas";
-uuidv4();
 
 function App() {
   const [todo, setTodo] = useState([]);
 
+  useEffect(() => {
+    const savedTodos = localStorage.getItem("todoList");
+    if (savedTodos) {
+      const parsedTodos = JSON.parse(savedTodos);
+      console.log("Loaded from localStorage:", parsedTodos);
+      setTodo(parsedTodos);
+    }
+  }, []);
+
+  useEffect(() => {
+    console.log("Saving to localStorage", todo);
+    localStorage.setItem("todoList", JSON.stringify(todo));
+  }, [todo]);
+
   const addTodo = (todos) => {
-    setTodo([
-      ...todo,
-      {
-        id: uuidv4(),
-        task: todos,
-        completed: false,
-        isEditing: false,
-      },
-    ]);
-    console.log(todo);
+    const newTodo = {
+      id: uuidv4(),
+      task: todos,
+      completed: false,
+      isEditing: false,
+    };
+    setTodo((prevTodos) => [...prevTodos, newTodo]);
+    console.log("Added new todo", newTodo);
   };
 
   const toggleComplete = (id) => {
-    setTodo(
-      todo.map((todos) =>
+    setTodo((prevTodos) =>
+      prevTodos.map((todos) =>
         todos.id === id ? { ...todos, completed: !todos.completed } : todos
       )
     );
   };
 
   const toggleDelete = (id) => {
-    setTodo(todo.filter((todos) => todos.id !== id));
+    setTodo((prevTodos) => prevTodos.filter((todos) => todos.id !== id));
+  };
+
+  const editTask = (id, newTask) => {
+    setTodo((prevTodos) =>
+      prevTodos.map((todos) =>
+        todos.id === id ? { ...todos, task: newTask } : todos
+      )
+    );
   };
 
   return (
@@ -48,6 +67,7 @@ function App() {
               key={todos.id}
               toggleComplete={toggleComplete}
               deleteTask={toggleDelete}
+              editTask={editTask}
             />
           ))}
         </div>

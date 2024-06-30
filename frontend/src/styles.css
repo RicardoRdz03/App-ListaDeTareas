@@ -28,6 +28,15 @@ body {
   color: rgb(194, 194, 194);
 }
 
+#inputs-2 {
+  width: 69%;
+  padding: 9px;
+  border: none;
+  border: 1px solid #4c52a5;
+  color: white;
+  background-color: #23254a;
+}
+
 #agregar-btn {
   padding: 10px 10px;
   background-color: #646cdb;
